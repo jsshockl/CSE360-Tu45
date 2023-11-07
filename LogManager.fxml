@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/21" fx:controller="application.LogManagerController">
+   <children>
+      <Label id="logManagerLabel" layoutX="243.0" layoutY="14.0" text="Log Manager">
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font>
+      </Label>
+      <Separator layoutX="2.0" layoutY="38.0" prefHeight="1.0" prefWidth="600.0" style="-fx-background-color: black;" />
+      <GridPane gridLinesVisible="true" layoutX="2.0" layoutY="40.0" prefHeight="361.0" prefWidth="600.0">
+        <columnConstraints>
+          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+        </columnConstraints>
+        <rowConstraints>
+          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+        </rowConstraints>
+         <children>
+            <Label />
+            <Label prefHeight="29.0" prefWidth="141.0" text="xlProjectController" />
+            <Label prefHeight="29.0" prefWidth="141.0" text="xlEffortCategoryController" GridPane.rowIndex="1" />
+            <Label prefHeight="29.0" prefWidth="141.0" text="xlClockStatus" GridPane.rowIndex="2" />
+            <Label prefHeight="29.0" prefWidth="141.0" text="xlTimeStopped" GridPane.rowIndex="4" />
+            <Label prefHeight="29.0" prefWidth="141.0" text="xlProjectRow" GridPane.rowIndex="5" />
+            <Label prefHeight="29.0" prefWidth="141.0" text="xlNumDefects" GridPane.rowIndex="6" />
+            <Label prefHeight="29.0" prefWidth="141.0" text="xlNumEffortEntries" GridPane.rowIndex="7" />
+            <Label prefHeight="29.0" prefWidth="141.0" text="xlEffortLogLCController" GridPane.rowIndex="8" />
+            <Label prefHeight="29.0" prefWidth="141.0" text="xlEffortLogECController" GridPane.rowIndex="9" />
+            <Label prefHeight="29.0" prefWidth="141.0" text="xlInjectedController" GridPane.rowIndex="10" />
+            <Label prefHeight="29.0" prefWidth="141.0" text="xlTimeStart" GridPane.rowIndex="3" />
+            <Label prefHeight="29.0" prefWidth="149.0" text="Stopped" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+            <Label id="startTimeLabel" prefHeight="29.0" prefWidth="148.0" text="21:40:03.930190" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+            <Label id="stopTimeLabel" prefHeight="29.0" prefWidth="147.0" text="21:40:05.930190" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+         </children>
+      </GridPane>
+      <Button id="backButton" fx:id="backConsole" layoutX="14.0" layoutY="13.0" mnemonicParsing="false" onAction="#backToConsoleClicked" text="Back to Console" />
+   </children>
+</AnchorPane>

@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ChoiceBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.shape.Line?>
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.controller">
+   <children>
+      <Line endX="100.0" startX="-100.0" />
+      <Line endX="586.5025024414062" endY="12.911093711853027" startX="16.127490997314453" startY="12.911088943481445" />
+      <Line endX="647.0144653320312" endY="12.911087036132812" layoutX="-61.0" layoutY="23.0" startX="75.92037963867188" startY="12.911087036132812" />
+      <Line endX="15.420380592346191" endY="12.911086082458496" startX="15.420380592346191" startY="379.046142578125" />
+      <Line endX="587.2095947265625" endY="12.91108512878418" startX="587.2095947265625" startY="380.0461730957031" />
+      <Line endX="586.7095947265625" endY="379.5461730957031" startX="15.920382499694824" startY="379.5461730957031" />
+      <Text layoutX="185.0" layoutY="34.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Effort Logger Console" wrappingWidth="226.88494224679422">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </Text>
+      <Rectangle fx:id="colorBox" arcHeight="5.0" arcWidth="5.0" fill="#ab0f0f" height="22.0" layoutX="28.0" layoutY="49.0" stroke="BLACK" strokeType="INSIDE" width="546.0" />
+      <Text layoutX="25.0" layoutY="95.0" strokeType="OUTSIDE" strokeWidth="0.0" text="1. When you start an activity, press the &quot;Start an Activity button&quot;" wrappingWidth="345.8022155761719" />
+      <Button fx:id="startB" layoutX="25.0" layoutY="105.0" mnemonicParsing="false" onAction="#startClicked" prefHeight="26.0" prefWidth="133.0" text="Start an Activity" />
+      <Text layoutX="25.0" layoutY="145.0" strokeType="OUTSIDE" strokeWidth="0.0" text="2. Select the project and Life cycle steps from the following lists:" wrappingWidth="351.11769104003906" />
+      <Text layoutX="26.0" layoutY="267.0" strokeType="OUTSIDE" strokeWidth="0.0" text="3. Press the &quot;Stop this Activity&quot; to generate an effort log entry using the attribbutes above" wrappingWidth="486.6621742248535" />
+      <Button fx:id="stopB" layoutX="25.0" layoutY="271.0" mnemonicParsing="false" onAction="#stopClicked" prefHeight="26.0" prefWidth="133.0" text="Stop this Activity" />
+      <ChoiceBox fx:id="projectB" layoutX="25.0" layoutY="169.0" prefWidth="150.0" />
+      <ChoiceBox fx:id="lifeB" layoutX="220.0" layoutY="169.0" prefWidth="150.0" />
+      <Text layoutX="25.0" layoutY="165.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Project:" wrappingWidth="47.21630859375">
+         <font>
+            <Font size="12.0" />
+         </font>
+      </Text>
+      <Text layoutX="220.0" layoutY="165.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Life Cycle Step:" wrappingWidth="99.21630859375">
+         <font>
+            <Font size="12.0" />
+         </font>
+      </Text>
+      <Label fx:id="clockLabel" layoutX="237.0" layoutY="49.0" text="Clock is Stopped" textFill="WHITE">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+      <Text layoutX="25.0" layoutY="318.0" strokeType="OUTSIDE" strokeWidth="0.0" text="4. Unless you are done for the day, it is best to perform steps 1 and 2 above before resuming work" wrappingWidth="552.21630859375" />
+      <Button fx:id="logManagerB" layoutX="25.0" layoutY="322.0" mnemonicParsing="false" onAction="#logManagerClicked" prefHeight="26.0" prefWidth="133.0" text="Log Manager" />
+      <Text layoutX="25.0" layoutY="212.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Effort Category:" wrappingWidth="83.21630859375">
+         <font>
+            <Font size="12.0" />
+         </font>
+      </Text>
+      <ChoiceBox fx:id="effortCat1" layoutX="25.0" layoutY="215.0" prefWidth="150.0" />
+      <ChoiceBox fx:id="effortCat2" layoutX="221.0" layoutY="215.0" prefHeight="26.0" prefWidth="150.0" />
+   </children>
+</Pane>
