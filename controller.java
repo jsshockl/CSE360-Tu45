@@ -65,29 +65,50 @@ public class controller {
     private Button logManagerB;
     
     @FXML
+    private Button defectConsoleB;
+    
+    @FXML
+    private Button effortLogEditorB;
+    
+    @FXML
+    void defectConsoleClicked(ActionEvent event) throws IOException {
+
+    	FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("DefectConsole.fxml"));
+
+		stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+		scene = new Scene(fxmlLoader.load());
+		stage.setTitle("Defect Console");
+
+		DefectConsoleManager defectControl = fxmlLoader.getController();
+		stage.setScene(scene);
+		stage.show();
+    }
+    
+    @FXML
+    void effortLogEditorClicked(ActionEvent event) throws IOException {
+    	
+    	FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("EffortLogEditor.fxml"));
+		
+		stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+		scene = new Scene(fxmlLoader.load());
+		stage.setTitle("Effort Logger");
+		
+		EffortLogEditorController control = fxmlLoader.getController();
+		stage.setScene(scene);
+		stage.show();
+
+    }
+    
+    @FXML
     void logManagerClicked(ActionEvent event) throws IOException {
     	
     	FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("LogManager.fxml"));
 		
 		stage = (Stage)((Node)event.getSource()).getScene().getWindow();
 		scene = new Scene(fxmlLoader.load());
-		stage.setTitle("Log Manager");
+		stage.setTitle("Effort Logger");
 		
 		LogManagerController control = fxmlLoader.getController();
-		stage.setScene(scene);
-		stage.show();
-    }
-
-    @FXML
-    void defectConsoleClicked(ActionEvent event) throws IOException {
-    	
-    	FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("DefectConsole.fxml"));
-		
-		stage = (Stage)((Node)event.getSource()).getScene().getWindow();
-		scene = new Scene(fxmlLoader.load());
-		stage.setTitle("Defect Console");
-		
-		DefectConsoleManager defectControl = fxmlLoader.getController();
 		stage.setScene(scene);
 		stage.show();
     }
