@@ -77,6 +77,20 @@ public class controller {
 		stage.setScene(scene);
 		stage.show();
     }
+
+    @FXML
+    void defectConsoleClicked(ActionEvent event) throws IOException {
+    	
+    	FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("DefectConsole.fxml"));
+		
+		stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+		scene = new Scene(fxmlLoader.load());
+		stage.setTitle("Defect Console");
+		
+		DefectConsoleManager defectControl = fxmlLoader.getController();
+		stage.setScene(scene);
+		stage.show();
+    }
     
     @FXML
     void startClicked(ActionEvent event) {
