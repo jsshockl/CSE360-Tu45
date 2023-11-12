@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ChoiceBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="416.0" prefWidth="600.0" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.DefectConsoleManager">
+   <children>
+      <Separator layoutX="8.0" layoutY="12.0" prefHeight="4.0" prefWidth="584.0" style="-fx-background-color: black;" />
+      <Label layoutX="242.0" layoutY="16.0" text="Defect Console">
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font>
+      </Label>
+      <Separator layoutX="8.0" layoutY="37.0" prefHeight="4.0" prefWidth="584.0" style="-fx-background-color: black;" />
+      <Label layoutX="8.0" layoutY="51.0" text="1. Select the Project">
+         <font>
+            <Font name="System Bold" size="14.0" />
+         </font>
+      </Label>
+      <ChoiceBox fx:id="projectType" layoutX="42.0" layoutY="69.0" prefHeight="26.0" prefWidth="262.0" />
+      <Label layoutX="344.0" layoutY="51.0" text="2.a. Clear this Project's Defect Log.">
+         <font>
+            <Font name="System Bold" size="14.0" />
+         </font>
+      </Label>
+      <Button fx:id="clearLog" layoutX="391.0" layoutY="70.0" mnemonicParsing="false" onAction="#clearLog" prefHeight="26.0" prefWidth="179.0" text="Clear this Defect Log" />
+      <Label layoutX="8.0" layoutY="96.0" text="2.b. Select one of the following defects to make it the Current Defect or press &quot;Create a New Defect&quot;.">
+         <font>
+            <Font name="System Bold" size="14.0" />
+         </font>
+      </Label>
+      <ChoiceBox fx:id="defectList" layoutX="42.0" layoutY="114.0" prefHeight="26.0" prefWidth="262.0" />
+      <Button fx:id="newDefect" layoutX="391.0" layoutY="114.0" mnemonicParsing="false" onAction="#newDefect" prefHeight="26.0" prefWidth="179.0" text="Create a New Defect" />
+      <Label layoutX="8.0" layoutY="140.0" text="3. Define or update the following Current Defect attributes:">
+         <font>
+            <Font name="System Bold" size="14.0" />
+         </font>
+      </Label>
+      <Label layoutX="28.0" layoutY="158.0" text="Num    Defect Name">
+         <font>
+            <Font name="System Bold" size="14.0" />
+         </font>
+      </Label>
+      <TextField fx:id="defectName" layoutX="43.0" layoutY="176.0" prefHeight="26.0" prefWidth="279.0" />
+      <Label layoutX="348.0" layoutY="158.0" text="Status: Closed">
+         <font>
+            <Font name="System Bold" size="14.0" />
+         </font>
+      </Label>
+      <Button layoutX="332.0" layoutY="176.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="118.0" text="Close" />
+      <Button layoutX="460.0" layoutY="176.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="118.0" text="Reopen" />
+      <Label layoutX="28.0" layoutY="202.0" text="Defect Symptoms or Cause/Resolution">
+         <font>
+            <Font name="System Bold" size="14.0" />
+         </font>
+      </Label>
+      <TextArea fx:id="defectSymptoms" layoutX="41.0" layoutY="220.0" prefHeight="49.0" prefWidth="534.0" />
+      <Label layoutX="28.0" layoutY="275.0" text="Step when injected">
+         <font>
+            <Font name="System Bold" size="14.0" />
+         </font>
+      </Label>
+      <Label layoutX="245.0" layoutY="275.0" text="Step when removed">
+         <font>
+            <Font name="System Bold" size="14.0" />
+         </font>
+      </Label>
+      <Label layoutX="450.0" layoutY="275.0" text="Defect Category">
+         <font>
+            <Font name="System Bold" size="14.0" />
+         </font>
+      </Label>
+      <ChoiceBox fx:id="injected" layoutX="50.0" layoutY="293.0" prefHeight="26.0" prefWidth="146.0" />
+      <ChoiceBox fx:id="removed" layoutX="227.0" layoutY="293.0" prefHeight="26.0" prefWidth="146.0" />
+      <ChoiceBox fx:id="defectCategory" layoutX="425.0" layoutY="293.0" prefHeight="26.0" prefWidth="146.0" />
+      <Label layoutX="28.0" layoutY="325.0" text="These attributes have been saved">
+         <font>
+            <Font name="System Bold" size="14.0" />
+         </font>
+      </Label>
+      <Label layoutX="13.0" layoutY="343.0" text="4. Press the &quot;Update the Current Defect&quot; to save the changes made above.">
+         <font>
+            <Font name="System Bold" size="14.0" />
+         </font>
+      </Label>
+      <Button fx:id="updateDefect" layoutX="14.0" layoutY="361.0" mnemonicParsing="false" onAction="#updateDefect" prefHeight="26.0" prefWidth="179.0" text="Update the Current Defect" />
+      <Button fx:id="deleteDefect" layoutX="203.0" layoutY="361.0" mnemonicParsing="false" onAction="#deleteDefect" prefHeight="26.0" prefWidth="179.0" text="Delete the Current Defect" />
+      <Button fx:id="logConsole" layoutX="391.0" layoutY="361.0" mnemonicParsing="false" onAction="#logConsoleClicked" prefHeight="26.0" prefWidth="204.0" text="Proceed to the Effort Log Console" />
+   </children>
+</AnchorPane>
