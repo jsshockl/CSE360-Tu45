@@ -23,6 +23,7 @@ public class controller {
 	
 	private Scene scene;
 	private Stage stage;
+	private int index;
 
 	ObservableList<String> projectList = FXCollections.observableArrayList("Business Project","Development Project");
 	ObservableList<String> lifeCycleList = FXCollections.observableArrayList("Planing", "Information Gathering","Infromation Understanding","Verifying",
@@ -115,19 +116,66 @@ public class controller {
     
     @FXML
     void startClicked(ActionEvent event) {
-    	
-    	if(projectB.getValue() != "Please Select" && lifeB.getValue() != "Please Select" && effortCat1.getValue() != "Please Select" && effortCat2.getValue() != "Please Select") {
-    		clockLabel.setText("Clock is running");
-        	colorBox.setFill(Color.GREEN);
+    	index = EffortLog.getTotalLogs();
+    	if (index <= 0) {
+    		EffortLog.logs[0] = new EffortObj();
+    		index = 0;
     	}
+    	else {
+    		EffortLog.logs[index] = new EffortObj();
+    	}
+    	
+        // Get the current date
+        LocalDate currentDate = LocalDate.now();
+
+        // Get the current time
+        LocalTime currentTime = LocalTime.now();
+
+        // Format the date and time
+        DateTimeFormatter dateFormatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+        DateTimeFormatter timeFormatter = DateTimeFormatter.ofPattern("HH:mm:ss");
+
+        String formattedDate = currentDate.format(dateFormatter);
+        String formattedTime = currentTime.format(timeFormatter);
+    	
+        //update effort object and label
+        ((EffortObj)(EffortLog.logs[index])).setStartDate(formattedDate);
+        ((EffortObj)(EffortLog.logs[index])).setStartTime(formattedTime);
+    	clockLabel.setText("Clock is running");
+        colorBox.setFill(Color.GREEN);
+
     }
 
     @FXML
     void stopClicked(ActionEvent event) {
-    	
-    	clockLabel.setText("Clock is stopped");
-    	colorBox.setFill(Color.DARKRED);
-    }
+    	if(projectB.getValue() != "Please Select" && lifeB.getValue() != "Please Select" && effortCat1.getValue() != "Please Select" && effortCat2.getValue() != "Please Select") {
+	    	LocalDate endDate = LocalDate.now();
+	
+	        // Get the current time
+	        LocalTime endTime = LocalTime.now();
+	
+	        // Format the date and time
+	        DateTimeFormatter dateFormatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+	        DateTimeFormatter timeFormatter = DateTimeFormatter.ofPattern("HH:mm:ss");
+	
+	        String formattedDate = endDate.format(dateFormatter);
+	        String formattedTime = endTime.format(timeFormatter);
+	        
+	        //System.out.print(formattedDate + "\n" + formattedTime + "\n");
+	        
+	    	clockLabel.setText("Clock is stopped");
+	    	colorBox.setFill(Color.DARKRED);
+	    	
+	    	//update effort log object
+	    	((EffortObj)(EffortLog.logs[index])).setEndDate(formattedDate);
+	        ((EffortObj)(EffortLog.logs[index])).setEndTime(formattedTime);
+	        ((EffortObj)(EffortLog.logs[index])).setProject(projectB.getValue());
+	        ((EffortObj)(EffortLog.logs[index])).setLifeCycle(lifeB.getValue());
+	        ((EffortObj)(EffortLog.logs[index])).setCategory1(effortCat1.getValue());
+	        ((EffortObj)(EffortLog.logs[index])).setCategory2(effortCat2.getValue());
+	        
+	        EffortLog.setTotalLogs(index + 1);
+	}
 
     @FXML
     void initialize() {
