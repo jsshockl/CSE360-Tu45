@@ -1,6 +1,9 @@
 package application;
 
 import java.io.IOException;
+import java.net.URL;
+import java.util.ResourceBundle;
+
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -21,7 +24,7 @@ import javafx.stage.Stage;
 public class DefectConsoleManager {
 	private Scene scene;
 	private Stage stage;
-	private EffortLog[] effortLogs;
+	private int index;
 
 	ObservableList<String> projectList = FXCollections.observableArrayList("Business Project","Development Project");
 	ObservableList<String> injectedList = FXCollections.observableArrayList("Planning","Information Gathering", "Information Understanding", "Verifying", "Outlining");
@@ -69,13 +72,13 @@ public class DefectConsoleManager {
 	@FXML
     void logConsoleClicked(ActionEvent event) throws IOException {
     	
-    	FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("effort.fxml"));
+    	FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("EffortLoggerConsole.fxml"));
 		
 		stage = (Stage)((Node)event.getSource()).getScene().getWindow();
 		scene = new Scene(fxmlLoader.load());
 		stage.setTitle("Log Console");
 		
-		controller control = fxmlLoader.getController();
+		ConsoleController control = fxmlLoader.getController();
 		stage.setScene(scene);
 		stage.show();
     }
@@ -83,11 +86,9 @@ public class DefectConsoleManager {
 	//clear the log and replace 
 	@FXML
     void clearLog(ActionEvent event) throws IOException {
-		int index = EffortLog.getNumEffort();
 		if (index >= 1) {
-			effortLogs[index-1] = new EffortLog();
+			EffortLog.logs[index-1] = new DefectObj();
 		}
-		EffortLog.setNumEffort(index-1);
 		projectType.setValue("Business Project");
 		defectList.setValue("- no defect selected -");
 		defectName.clear();
@@ -98,34 +99,47 @@ public class DefectConsoleManager {
 	//create a new defect
 	@FXML
     void newDefect(ActionEvent event) throws IOException {
-		int index = EffortLog.getNumEffort();
-		effortLogs[index] = new EffortLog();
-		effortLogs[index].setProject(projectType.getValue());
-		EffortLog.setNumEffort(index+1);
+		index = EffortLog.getTotalLogs();
+    	if (index <= 0) {
+    		EffortLog.logs[0] = new DefectObj();
+    		index = 0;
+    	}
+    	else {
+    		EffortLog.logs[index] = new DefectObj();
+    	}
+    	//update project type and index
+    	((DefectObj)(EffortLog.logs[index])).setProject(projectType.getValue());
+    	index++;
+    	EffortLog.setTotalLogs(index);
+
 	}
 	
 	@FXML
     void updateDefect(ActionEvent event) throws IOException {
-		int index = EffortLog.getNumEffort() - 1;
+		//int index = DefectObj.getNumEffort() - 1;
 		if (index >= 0) {
-			effortLogs[index].setDefectName(defectName.getText());
-			effortLogs[index].setDefectSymptoms(defectSymptoms.getText());
-			effortLogs[index].setInjected(injected.getValue());
-			effortLogs[index].setRemoved(removed.getValue());
-			effortLogs[index].setDefectCategory(defectCategory.getValue());
+			((DefectObj)(EffortLog.logs[index - 1])).setDefectName(defectName.getText());
+			((DefectObj)(EffortLog.logs[index - 1])).setDefectSymptoms(defectSymptoms.getText());
+			((DefectObj)(EffortLog.logs[index - 1])).setInjected(injected.getValue());
+			((DefectObj)(EffortLog.logs[index - 1])).setRemoved(removed.getValue());
+			((DefectObj)(EffortLog.logs[index - 1])).setDefectCategory(defectCategory.getValue());
 			
 		}
-		System.out.print(effortLogs[index].toString());
+		for (int i = 0; i < EffortLog.getTotalLogs(); i++) {
+        	System.out.print(EffortLog.getTotalLogs() + "\n" + EffortLog.logs[i].toString() + "\n\n");
+        }
 	}
 	
 	//delete a defect
 	@FXML
     void deleteDefect(ActionEvent event) throws IOException {
-		int index = EffortLog.getNumEffort();
 		if (index >= 1) {
-			effortLogs[index-1] = null;
+			EffortLog.logs[index-1] = null;
 		}
-		EffortLog.setNumEffort(index-1);
+		
+		//update index and total logs
+		index--;
+		EffortLog.setTotalLogs(index);
 		projectType.setValue("Business Project");
 		defectList.setValue("- no defect selected -");
 		defectName.clear();
@@ -145,9 +159,6 @@ public class DefectConsoleManager {
 	    injected.setItems(injectedList);
 	    removed.setItems(removedList);
 	    defectCategory.setItems(defectCategoryList);
-	    
-	    //array of effort log items
-	    effortLogs = new EffortLog[995];
-	    	
+
 	  }
 }
