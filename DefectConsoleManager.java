@@ -125,9 +125,7 @@ public class DefectConsoleManager {
 			((DefectObj)(EffortLog.logs[index - 1])).setDefectCategory(defectCategory.getValue());
 			
 		}
-		for (int i = 0; i < EffortLog.getTotalLogs(); i++) {
-        	System.out.print(EffortLog.getTotalLogs() + "\n" + EffortLog.logs[i].toString() + "\n\n");
-        }
+		
 	}
 	
 	//delete a defect
