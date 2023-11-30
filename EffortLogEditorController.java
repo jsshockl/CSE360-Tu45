@@ -11,6 +11,7 @@ import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
+import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
 public class EffortLogEditorController {
@@ -20,18 +21,39 @@ public class EffortLogEditorController {
 	
 	ObservableList<String> projectList = FXCollections.observableArrayList("Business Project","Development Project");
 	ObservableList<String> effortCategory = FXCollections.observableArrayList("Plans", "Deliverables", "Interruptions", "Defects", "Others");
+	ObservableList<String> lifeCycleList = FXCollections.observableArrayList("Planing", "Information Gathering","Infromation Understanding","Verifying",
+			"Outlining","Drafting","Finalizing","Team Meeting","Coach Meeting","Stakeholder Meeting");
 
     @FXML
     private Button clearEffortButton;
-
+    
     @FXML
-    private ChoiceBox<String> effortCategoryChoiceBox;
-
+    private Button updateEntryButton;
+    
     @FXML
     private Button proceedToEffortB;
 
     @FXML
+    private ChoiceBox<String> effortCategoryChoiceBox;
+    
+    @FXML
+    private ChoiceBox<String> lifeCycleStepChoiceBox;
+    
+    @FXML
+    private ChoiceBox<String> selectEffortEntryChoiceBox;
+    
+    @FXML
     private ChoiceBox<String> selectProjectChoiceBox;
+    
+    @FXML
+    private TextField newDate;
+
+    @FXML
+    private TextField newStartTime;
+
+    @FXML
+    private TextField newStopTime;
+    
 
     @FXML
     void proceedToEffortClicked(ActionEvent event) throws IOException {
@@ -51,10 +73,39 @@ public class EffortLogEditorController {
     }
     
     @FXML
+    void clearEffortClicked(ActionEvent event) {
+    	
+    	newDate.setText("");
+    	newStartTime.setText("");
+    	newStopTime.setText("");
+    	effortCategoryChoiceBox.setValue("");
+    	lifeCycleStepChoiceBox.setValue("");
+    	selectProjectChoiceBox.setValue("");
+    	selectEffortEntryChoiceBox.setValue("");
+
+    }
+    
+    @FXML
+    void updateEntryClicked(ActionEvent event) {
+    	
+    	String newDateValue = newDate.getText();
+        String newStartTimeValue = newStartTime.getText();
+        String newStopTimeValue = newStopTime.getText();
+        String newLifeCycleStep = lifeCycleStepChoiceBox.getValue();
+        String newEffortCategory = effortCategoryChoiceBox.getValue();
+        
+        if(newDateValue.isEmpty() || newStartTimeValue.isEmpty() || newStopTimeValue.isEmpty()) {
+            
+            return;
+        }
+
+    }
+    
+    @FXML
     void initialize() {
     	
-    	selectProjectChoiceBox.setItems(projectList);
     	effortCategoryChoiceBox.setItems(effortCategory);
+    	lifeCycleStepChoiceBox.setItems(lifeCycleList);
     	
     }
 
