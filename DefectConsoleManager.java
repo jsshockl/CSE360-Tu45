@@ -1,3 +1,5 @@
+//Author: Raneem Youssef
+
 package application;
 
 import java.io.IOException;
@@ -45,6 +47,12 @@ public class DefectConsoleManager {
 	private Button clearLog;
 	
 	@FXML
+	private Button closeButton;
+	
+	@FXML
+	private Button openButton;
+	
+	@FXML
 	private Button newDefect;
 	
 	@FXML
@@ -67,6 +75,15 @@ public class DefectConsoleManager {
 	
 	@FXML
 	private Button logConsole;
+	
+	@FXML
+	private Label status;
+	
+	@FXML
+	private Label isSaved;
+	
+	
+	boolean isOpen = false;
 	
 	//moves to log console when clicked
 	@FXML
@@ -111,19 +128,25 @@ public class DefectConsoleManager {
     	((DefectObj)(EffortLog.logs[index])).setProject(projectType.getValue());
     	index++;
     	EffortLog.setTotalLogs(index);
+    	isOpen = true;
 
 	}
 	
 	@FXML
     void updateDefect(ActionEvent event) throws IOException {
 		//int index = DefectObj.getNumEffort() - 1;
-		if (index >= 0) {
+		if (isOpen == true) { //only if the defect object is open
+			if (index >= 0) {
 			((DefectObj)(EffortLog.logs[index - 1])).setDefectName(defectName.getText());
 			((DefectObj)(EffortLog.logs[index - 1])).setDefectSymptoms(defectSymptoms.getText());
 			((DefectObj)(EffortLog.logs[index - 1])).setInjected(injected.getValue());
 			((DefectObj)(EffortLog.logs[index - 1])).setRemoved(removed.getValue());
 			((DefectObj)(EffortLog.logs[index - 1])).setDefectCategory(defectCategory.getValue());
 			
+			}
+			for (int i = 0; i < EffortLog.getTotalLogs(); i++) {
+	        	System.out.print(EffortLog.getTotalLogs() + "\n" + EffortLog.logs[i].toString() + "\n\n");
+	        }
 		}
 		
 	}
@@ -131,20 +154,36 @@ public class DefectConsoleManager {
 	//delete a defect
 	@FXML
     void deleteDefect(ActionEvent event) throws IOException {
-		if (index >= 1) {
-			EffortLog.logs[index-1] = null;
+		if (isOpen == true) {
+			if (index >= 1) {
+				EffortLog.logs[index-1] = null;
+			}
+			
+			//update index and total logs
+			index--;
+			EffortLog.setTotalLogs(index);
+			projectType.setValue("Business Project");
+			defectList.setValue("- no defect selected -");
+			defectName.clear();
+			defectSymptoms.clear();
+			injected.setValue("Planning");
+		    removed.setValue("Planning");
 		}
 		
-		//update index and total logs
-		index--;
-		EffortLog.setTotalLogs(index);
-		projectType.setValue("Business Project");
-		defectList.setValue("- no defect selected -");
-		defectName.clear();
-		defectSymptoms.clear();
-		injected.setValue("Planning");
-	    removed.setValue("Planning");
 	}
+	
+	@FXML
+    void close(ActionEvent event) throws IOException {
+		status.setText("Status: Closed");
+		isOpen = false;
+	}
+	
+	@FXML
+    void reopen(ActionEvent event) throws IOException {
+		status.setText("Status: Open");
+		isOpen = true;
+	}
+	
 	 @FXML
 	 void initialize() {
 	    projectType.setValue("Business Project");
@@ -159,4 +198,5 @@ public class DefectConsoleManager {
 	    defectCategory.setItems(defectCategoryList);
 
 	  }
+	 
 }
