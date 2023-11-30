@@ -48,13 +48,13 @@
          </font>
       </Label>
       <TextField fx:id="defectName" layoutX="43.0" layoutY="176.0" prefHeight="26.0" prefWidth="279.0" />
-      <Label layoutX="348.0" layoutY="158.0" text="Status: Closed">
+      <Label fx:id="status" layoutX="348.0" layoutY="158.0" text="Status: Closed">
          <font>
             <Font name="System Bold" size="14.0" />
          </font>
       </Label>
-      <Button layoutX="332.0" layoutY="176.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="118.0" text="Close" />
-      <Button layoutX="460.0" layoutY="176.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="118.0" text="Reopen" />
+      <Button fx:id="closeButton" layoutX="332.0" layoutY="176.0" mnemonicParsing="false" onAction="#close" prefHeight="26.0" prefWidth="118.0" text="Close" />
+      <Button fx:id="openButton" layoutX="460.0" layoutY="176.0" mnemonicParsing="false" onAction="#reopen" prefHeight="26.0" prefWidth="118.0" text="Reopen" />
       <Label layoutX="28.0" layoutY="202.0" text="Defect Symptoms or Cause/Resolution">
          <font>
             <Font name="System Bold" size="14.0" />
@@ -79,7 +79,7 @@
       <ChoiceBox fx:id="injected" layoutX="50.0" layoutY="293.0" prefHeight="26.0" prefWidth="146.0" />
       <ChoiceBox fx:id="removed" layoutX="227.0" layoutY="293.0" prefHeight="26.0" prefWidth="146.0" />
       <ChoiceBox fx:id="defectCategory" layoutX="425.0" layoutY="293.0" prefHeight="26.0" prefWidth="146.0" />
-      <Label layoutX="28.0" layoutY="325.0" text="These attributes have been saved">
+      <Label fx:id= "isSaved" layoutX="28.0" layoutY="325.0" text="These attributes have been saved">
          <font>
             <Font name="System Bold" size="14.0" />
          </font>
