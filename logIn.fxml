@@ -15,7 +15,7 @@
             <Font size="30.0" />
          </font>
       </Text>
-      <Text layoutX="14.0" layoutY="93.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Please enter Login information:" wrappingWidth="237.373046875">
+      <Text layoutX="15.0" layoutY="70.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Please enter Login information:" wrappingWidth="237.373046875">
          <font>
             <Font size="18.0" />
          </font>

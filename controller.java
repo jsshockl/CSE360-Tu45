@@ -2,6 +2,9 @@ package application;
 
 import java.io.IOException;
 import java.net.URL;
+import java.time.LocalDate;
+import java.time.LocalTime;
+import java.time.format.DateTimeFormatter;
 import java.util.ResourceBundle;
 
 import javafx.collections.FXCollections;
@@ -72,6 +75,12 @@ public class controller {
     private Button effortLogEditorB;
     
     @FXML
+    private Button effortAndDefectB;
+    
+    @FXML
+    private Button definitionsB;
+    
+    @FXML
     void defectConsoleClicked(ActionEvent event) throws IOException {
 
     	FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("DefectConsole.fxml"));
@@ -84,6 +93,19 @@ public class controller {
 		stage.setScene(scene);
 		stage.show();
     }
+    @FXML
+    void definitionsClicked(ActionEvent event) throws IOException {
+
+    	FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("Definitions.fxml"));
+
+		stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+		scene = new Scene(fxmlLoader.load());
+		stage.setTitle("Definitions");
+
+		DefinitionsController definitionsController = fxmlLoader.getController();
+		stage.setScene(scene);
+		stage.show();
+    }
     
     @FXML
     void effortLogEditorClicked(ActionEvent event) throws IOException {
@@ -92,7 +114,7 @@ public class controller {
 		
 		stage = (Stage)((Node)event.getSource()).getScene().getWindow();
 		scene = new Scene(fxmlLoader.load());
-		stage.setTitle("Effort Logger");
+		stage.setTitle("Effort Logger Editor");
 		
 		EffortLogEditorController control = fxmlLoader.getController();
 		stage.setScene(scene);
@@ -174,7 +196,7 @@ public class controller {
 	        ((EffortObj)(EffortLog.logs[index])).setCategory1(effortCat1.getValue());
 	        ((EffortObj)(EffortLog.logs[index])).setCategory2(effortCat2.getValue());
 	        
-	        EffortLog.setTotalLogs(index + 1);
+	        EffortLog.setTotalLogs(index + 1);}
 	}
 
     @FXML

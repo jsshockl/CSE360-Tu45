@@ -54,9 +54,9 @@
       </Text>
       <ChoiceBox fx:id="effortCat1" layoutX="25.0" layoutY="215.0" prefWidth="150.0" />
       <ChoiceBox fx:id="effortCat2" layoutX="221.0" layoutY="215.0" prefHeight="26.0" prefWidth="150.0" />
-      <Button layoutX="25.0" layoutY="322.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="133.0" text="Effort Log Editor" />
+      <Button fx:id="effortLogEditorB" layoutX="25.0" layoutY="322.0" mnemonicParsing="false" onAction="#effortLogEditorClicked" prefHeight="26.0" prefWidth="133.0" text="Effort Log Editor" />
       <Button fx:id="defectConsoleB" layoutX="171.0" layoutY="322.0" mnemonicParsing="false" onAction="#defectConsoleClicked" prefHeight="26.0" prefWidth="133.0" text="Defect Log Console" />
-      <Button layoutX="319.0" layoutY="322.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="133.0" text="Definitions" />
-      <Button layoutX="467.0" layoutY="322.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="142.0" text="Effort and Defect Logs" />
+      <Button fx:id="definitionsB" layoutX="319.0" layoutY="322.0" mnemonicParsing="false" onAction="#definitionsClicked" prefHeight="26.0" prefWidth="133.0" text="Definitions" />
+      <Button fx:id="effortAndDefectB" layoutX="467.0" layoutY="322.0" mnemonicParsing="false" onAction="#logManagerClicked" prefHeight="26.0" prefWidth="142.0" text="Effort and Defect Logs" />
    </children>
 </Pane>

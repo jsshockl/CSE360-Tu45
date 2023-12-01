@@ -89,7 +89,7 @@ public class DefectConsoleManager {
 	@FXML
     void logConsoleClicked(ActionEvent event) throws IOException {
     	
-    	FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("EffortLoggerConsole.fxml"));
+    	FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("effort.fxml"));
 		
 		stage = (Stage)((Node)event.getSource()).getScene().getWindow();
 		scene = new Scene(fxmlLoader.load());
