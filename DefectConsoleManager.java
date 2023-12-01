@@ -95,7 +95,7 @@ public class DefectConsoleManager {
 		scene = new Scene(fxmlLoader.load());
 		stage.setTitle("Log Console");
 		
-		ConsoleController control = fxmlLoader.getController();
+		controller control = fxmlLoader.getController();
 		stage.setScene(scene);
 		stage.show();
     }
